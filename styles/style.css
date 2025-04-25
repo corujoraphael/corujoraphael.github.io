@@ -189,7 +189,7 @@ section#highlights {
   display: flex;
   align-items: stretch;
   justify-content: center;
-  color: #bf5b04;
+  color: #8B4204;
   padding: 30px 0;
   flex-wrap: wrap;
 }
@@ -238,7 +238,7 @@ section#highlights .text h2 {
 }
 
 section#highlights .see_all {
-  color:  #bf5b04;
+  color:  #8B4204;
   font-size: 16px;
   text-decoration: none;
   border: 1px solid #f2b263;
@@ -334,13 +334,13 @@ section#contact_us{
 }
 
 section#contact_us h2{ 
-  color: #bf5b04;
+  color: #8B4204;
   padding: 20px 0 0;
   margin-bottom: 0;
 }
 
 section#contact_us p{ 
-  color: #bf5b04;
+  color: #8B4204;
   text-align: center;
   margin-top: 0;
   margin-bottom: 50px;
@@ -377,7 +377,7 @@ section#contact_us .item .icon{
 
 
 section#products {
-  color: #bf5b04;
+  color: #8B4204;
   padding: 30px 0;
   display: block;
 }
@@ -428,7 +428,7 @@ section#products .product_data {
 }
 
 section#products .product h3 {
-  color: #bf5b04;
+  color: #8B4204;
   font-weight: 600;
   text-align: center;
   margin: 10px 0 0;
@@ -448,7 +448,7 @@ section#products .product .price {
 
 
 section#products .product a.button {
-  color: #bf5b04;
+  color: #8B4204;
   text-decoration: none;
   border: 1px solid #f2b263;
   padding: 5px 15px;
@@ -474,7 +474,7 @@ section#products .product a.button:hover {
 }
 
 section#products .see_all {
-  color:  #bf5b04;
+  color:  #8B4204;
   font-size: 16px;
   text-decoration: none;
   border: 1px solid #f2b263;
@@ -499,7 +499,7 @@ span.bold {
 }
 
 section#product_info h1 {
-  color: #bf5b04;
+  color: #8B4204;
   font-size: 27px;
   text-align: center;
   margin-bottom: 0;
@@ -515,7 +515,7 @@ section#product_info h2 {
 section#product_info div#details {
   display: flex;
   padding: 20px;
-  color: #bf5b04;
+  color: #8B4204;
   flex-wrap: wrap;
 }
 
@@ -552,7 +552,7 @@ section#product_info .data .price{
 }
 
 section#product_info .data a.button {
-  color:  #bf5b04;
+  color:  #8B4204;
   font-size: 16px;
   text-decoration: none;
   border: 1px solid #f2b263;
