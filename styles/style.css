@@ -191,10 +191,11 @@ section#highlights {
   justify-content: center;
   color: #bf5b04;
   padding: 30px 0;
+  flex-wrap: wrap;
 }
 
 section#highlights .image {
-  flex: 3 3 ;
+  flex: 3 3;
   height: auto;
   max-width: 100%;
   display: block;
@@ -279,10 +280,11 @@ section#testimonials p {
 
 section#testimonials .cards {
   display: flex;
+  flex-wrap: wrap;
 }
 
 section#testimonials .testimonial {
-  flex: 1 1;
+  flex: 1 1 calc(33.333% - 180px);
   padding: 20px;
   background: #fff;
   margin: 10px 30px;
@@ -352,11 +354,12 @@ section#contact_us > div{
 
 section#contact_us div .container{ 
   display: flex;
+  flex-wrap: wrap;
 }
 
 section#contact_us div .item{ 
   font-size: 18px;
-  flex: 1 1;
+  flex: 1 1 calc(33.333% - 10px);
 }
 
 section#contact_us .item .icon{ 
@@ -698,6 +701,19 @@ footer .right {
     }
 }
 
+@media screen and (max-width: 480px){
+
+  section#products .product{
+    flex: 1 1 100%;
+  }
+
+  section#product_info{
+    display: block;
+  }
+  
+}
+
+
 @media screen and (max-width: 768px) {
   section#cover {
     display: block;
@@ -733,16 +749,43 @@ footer .right {
   section#testimonials .slider {
     display: block;
   }
-}
 
-@media screen and (max-width: 480px){
+  section#testimonials .testimonial, section#contact_us div .item  {
+    flex: 1 1 100%;
+  }
+  
 
-  section#products .product{
+  section#products .see_all, section#highlights .see_all {
+    width: 100%;
+  }
+
+  section#highlights .text{
+    padding: 0 20px;
     flex: 1 1 100%;
   }
 
-  section#product_info{
-    display: block;
+  section#highlights .image{
+    padding: 0 20px;
+    flex: 1 1 100%;
   }
+
+  section#contact_us p {
+    margin-bottom: 10px;
+  }
+
+  footer .right {
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 1200px) and (min-width: 768px) {
   
+  section#highlights .image img {
+    height: 50%;
+  }
+
+
+  section#highlights .image::after {
+    height: 50%;
+  }
 }
