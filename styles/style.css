@@ -382,7 +382,11 @@ section#products {
 
 section#products p {
   text-align: center;
-  padding: 0 20px;
+  padding: 0;
+  margin: 0;
+}
+section#products h2 {
+  margin-bottom: 0;
 }
 
 section#products .container {
@@ -403,6 +407,7 @@ section#products .product {
   align-self: stretch;
   position: relative;
   flex-grow: 1;
+  padding-top: 54px;
 }
 
 section#products .product img {
@@ -430,7 +435,12 @@ section#products .product h3 {
 section#products .product .type {
   text-align: center;
   font-size: 14px;
-  margin: 5px 0 11px 0;
+  margin: 5px 0;
+}
+
+section#products .product .price {
+  font-weight: 500;
+  margin: 5px 0;
 }
 
 
