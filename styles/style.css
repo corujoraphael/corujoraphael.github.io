@@ -117,7 +117,7 @@ section#cover::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('../imgs/background.webp'); 
+  background-image: url('../imgs/background1.webp'); 
   /* background-size: cover; */
   background-position: center;
   opacity: 0.2;
@@ -325,7 +325,7 @@ section#testimonials .slider {
 
 section#contact_us{
   background-color: rgba(242, 178, 99, 0.39);
-  background-image: url('../imgs/cesta\ 8.webp'); /* Caminho da imagem */
+  background-image: url('../imgs/cesta\ 81.webp'); /* Caminho da imagem */
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -585,7 +585,7 @@ footer::after {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('../imgs/background.webp'); 
+  background-image: url('../imgs/background1.webp'); 
   /* background-size: cover; */
   background-position: center;
   opacity: 0.2;
