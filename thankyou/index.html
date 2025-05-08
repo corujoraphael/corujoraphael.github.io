@@ -10,6 +10,10 @@
     function gerarTransactionId() {
       return 'tx-' + Math.random().toString(36).substring(2, 10) + '-' + Date.now();
     }
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
 
     const params = new URLSearchParams(window.location.search);
     const cesta = params.get('cesta');
