@@ -6,6 +6,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("./imgs");
   eleventyConfig.addPassthroughCopy("./fonts");
   eleventyConfig.addPassthroughCopy("./js");
+  eleventyConfig.addPassthroughCopy("./catalogos");
 
 	
   eleventyConfig.addTransform("htmlmin", (content, outputPath) => {
