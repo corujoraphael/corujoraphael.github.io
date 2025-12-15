@@ -1,5 +1,5 @@
 ---
-title: Cesta Nata Noite Feliz
+title: Cesta Natal Noite Feliz
 pageTitle: Cesta Natal em Conselheiro Lafaiete MG | Noite Feliz | Memorare Cestas
 tags: cesta
 type: Natal

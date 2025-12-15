@@ -1,12 +1,12 @@
 ---
-title: Cesta Nata Gratidão
+title: Cesta Natal Gratidão
 pageTitle: Cesta Natal em Conselheiro Lafaiete MG | Gratidão | Memorare Cestas
 tags: cesta
 type: Natal
 price: R$ 170,00
 photo: Cesta Natal Gratidao - Conselheiro Lafaiete.webp
 layout: posts
-data: 15/12/2025
+data: 12/12/2025
 ---
 Cesta artesanal especial de Natal composta pelos seguintes itens:
 

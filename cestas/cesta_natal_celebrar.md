@@ -1,5 +1,5 @@
 ---
-title: Cesta Nata Celebrar
+title: Cesta Natal Celebrar
 pageTitle: Cesta Natal em Conselheiro Lafaiete MG | Celebrar | Memorare Cestas
 tags: cesta
 type: Natal

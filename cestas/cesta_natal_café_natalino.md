@@ -1,5 +1,5 @@
 ---
-title: Cesta Nata Café Natalino
+title: Cesta Natal Café Natalino
 pageTitle: Cesta Natal em Conselheiro Lafaiete MG | Café Natalino | Memorare Cestas
 tags: cesta
 type: Natal
