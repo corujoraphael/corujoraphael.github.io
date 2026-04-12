@@ -1,0 +1,177 @@
+<h1>Documento de Design</h1><h2>Visão Geral</h2><p>Este design detalha o redesign do site Memorare Cestas, transformando-o de um layout funcional básico para um site moderno, visualmente atraente e otimizado para SEO local. A arquitetura Eleventy (11ty) com templates Liquid é mantida, garantindo carregamento instantâneo via GitHub Pages. O design é inspirado no site afetoepoesias.com.br, que apresenta seções bem definidas: &quot;Mais Pedidas&quot; (carrossel de destaques), categorias visuais em grid, seção &quot;Sobre Nós&quot; com storytelling pessoal, e hierarquia visual clara.</p><p>As principais mudanças incluem:</p><ul><li>Homepage redesenhada com hero section, produtos em destaque, seção sobre, depoimentos</li><li>Navegação com sticky header e menu hambúrguer mobile</li><li>Página de produtos com filtro por categoria via JavaScript puro</li><li>Analytics granular com eventos específicos por ação do visitante</li><li>SEO local reforçado com schema markup expandido (LocalBusiness, Product, BreadcrumbList)</li><li>Páginas de keyword SEO herdando automaticamente o novo visual</li></ul><h2>Arquitetura</h2><p>A arquitetura permanece como site estático Eleventy com deploy no GitHub Pages. Não há backend, banco de dados ou APIs externas (exceto Google Analytics/Ads).</p><pre><code class="language-mermaid">graph TD
+    A[Arquivos Markdown&lt;br/&gt;cestas/*.md + keywords/*.md] --&gt; B[Eleventy Build]
+    C[Templates Liquid&lt;br/&gt;_includes/*.html] --&gt; B
+    D[Dados Globais&lt;br/&gt;_data/site.json] --&gt; B
+    E[CSS + JS&lt;br/&gt;styles/ + js/] --&gt; B
+    B --&gt; F[_site/&lt;br/&gt;HTML estático minificado]
+    F --&gt; G[GitHub Pages]
+    
+    subgraph &quot;Templates&quot;
+        C1[layout.html&lt;br/&gt;Base layout] --&gt; C2[home.html&lt;br/&gt;Homepage + Keywords]
+        C1 --&gt; C3[posts.html&lt;br/&gt;Detalhe produto]
+        C1 --&gt; C4[produtos.html&lt;br/&gt;Listagem]
+    end
+</code></pre><h3>Fluxo de Dados dos Produtos</h3><pre><code class="language-mermaid">graph LR
+    A[cestas/*.md&lt;br/&gt;frontmatter: title, type,&lt;br/&gt;price, photo, data] --&gt; B[Collection 'cesta'&lt;br/&gt;via tags: cesta]
+    B --&gt; C[orderByDate filter]
+    C --&gt; D[Templates renderizam&lt;br/&gt;cards de produto]
+</code></pre><h3>Estrutura de Arquivos Modificados</h3><pre><code>_includes/
+  layout.html          # Base layout (header, footer, analytics, schema)
+  home.html            # Homepage + keyword pages layout
+  posts.html           # Product detail layout
+  partials/
+    header.html        # Header com sticky + menu mobile
+    footer.html        # Footer redesenhado
+    testimonials.html  # Seção de depoimentos reutilizável
+    product-card.html  # Card de produto reutilizável
+    analytics.html     # Scripts de analytics
+    schema.html        # Schema JSON-LD base
+styles/
+  style.css            # CSS redesenhado completo
+js/
+  index.js             # Menu mobile, filtro de categorias, analytics events
+index.html             # Homepage
+produtos.html          # Página de produtos com filtro
+</code></pre><h2>Componentes e Interfaces</h2><h3>1. Layout Base (layout.html)</h3><p>O layout base é o wrapper de todas as páginas. Ele inclui:</p><ul><li><code>&lt;html lang=&quot;pt-BR&quot;&gt;</code> (corrigido de &quot;en&quot;)</li><li>Meta tags dinâmicas (title, description, Open Graph)</li><li>Inclusão de partials: header, footer, analytics, schema</li><li>Botão flutuante WhatsApp com animação de pulso</li></ul><p><strong>Interface do template:</strong></p><pre><code class="language-liquid">&lt;!-- Variáveis esperadas do frontmatter --&gt;
+     &lt;!-- Título da página para &lt;title&gt; e og:title --&gt;
+   &lt;!-- Meta description e og:description --&gt;
+         &lt;!-- Imagem para og:image (opcional) --&gt;
+     &lt;!-- URL canônica --&gt;
+</code></pre><h3>2. Header (partials/header.html)</h3><p>Header sticky com:</p><ul><li>Logo à esquerda</li><li>Links de navegação: Início, Produtos, Sobre (âncora para seção na homepage)</li><li>Ícone WhatsApp à direita (visível em desktop)</li><li>Botão hambúrguer em mobile que abre/fecha menu overlay</li></ul><p><strong>Comportamento JavaScript:</strong></p><pre><code class="language-javascript">// Toggle menu mobile
+document.querySelector('.menu-toggle').addEventListener('click', () =&gt; {
+  document.querySelector('.nav-menu').classList.toggle('active');
+});
+</code></pre><h3>3. Homepage (home.html / index.html)</h3><p>Seções em ordem:</p><ol><li><strong>Hero Section</strong>: Fundo com gradiente escuro + imagem de cesta em destaque, título H1 &quot;Cestas Artesanais em Conselheiro Lafaiete&quot; com tipografia Calistoga, subtítulo emocional (&quot;Transforme momentos especiais em memórias inesquecíveis&quot;), CTA WhatsApp grande e chamativo, badge de localização</li><li><strong>Diferenciais/Confiança</strong>: Faixa com 3-4 ícones + texto curto — &quot;Feitas à mão com carinho&quot;, &quot;Entrega em Conselheiro Lafaiete&quot;, &quot;Ingredientes frescos e selecionados&quot;, &quot;Embalagem que encanta&quot; — gera confiança imediata</li><li><strong>Produtos em Destaque</strong>: Título &quot;Nossas Cestas Mais Pedidas&quot;, Grid 4 colunas (desktop) / 2 colunas (tablet) / 1 coluna (mobile) com os 4 produtos mais recentes, botão &quot;Ver todas as cestas&quot;</li><li><strong>Seção Sobre</strong>: Layout 2 colunas (imagem + texto storytelling sobre o negócio Memorare Cestas, história pessoal, paixão pelo artesanal) — gera conexão emocional</li><li><strong>Depoimentos</strong>: Cards de clientes com nome, estrelas e texto — prova social</li><li><strong>CTA Final</strong>: Seção com fundo colorido, texto &quot;Pronta para surpreender alguém especial?&quot; e botão WhatsApp grande</li><li><strong>Contato</strong>: Seção com ícones de localização, Instagram e WhatsApp</li></ol><h3>4. Página de Produtos (produtos.html)</h3><ul><li>Título H1 com keyword local</li><li>Filtro por categoria via botões/pills (JavaScript puro, sem reload)</li><li>Grid de product cards com todos os produtos</li><li>Seção highlights abaixo</li></ul><p><strong>Filtro de categorias:</strong></p><pre><code class="language-javascript">// Extrai categorias únicas dos data-attributes dos cards
+// Filtra mostrando/escondendo cards com display: none/block
+document.querySelectorAll('.filter-btn').forEach(btn =&gt; {
+  btn.addEventListener('click', () =&gt; {
+    const category = btn.dataset.category;
+    document.querySelectorAll('.product').forEach(card =&gt; {
+      card.style.display = (category === 'all' || card.dataset.type === category) 
+        ? '' : 'none';
+    });
+  });
+});
+</code></pre><h3>5. Página de Detalhe do Produto (posts.html) — Estilo Landing Page</h3><p>Cada página de produto funciona como uma mini landing page projetada para gerar desejo e converter, inspirada em landing pages de SaaS:</p><p><strong>Estrutura da página (de cima para baixo):</strong></p><ol><li><strong>Breadcrumb</strong>: Início &gt; Produtos &gt; Nome do Produto (com schema BreadcrumbList)</li><li><strong>Hero do Produto</strong>: Layout 2 colunas — imagem grande à esquerda com bordas arredondadas, à direita: nome (H1 com keyword local), categoria como badge, preço em destaque, CTA primário &quot;Reservar pelo WhatsApp&quot; (botão grande e chamativo)</li><li><strong>Seção &quot;O que vem na cesta&quot;</strong>: Lista de itens formatada com ícones/checkmarks, visual limpo e escaneável — mostra o valor do produto</li><li><strong>Seção de Urgência/Confiança</strong>: Badges de confiança — &quot;Entrega em Conselheiro Lafaiete&quot;, &quot;Pedidos com 24h de antecedência&quot;, &quot;Aceitamos Pix, Cartão e Transferência&quot;, &quot;Embalagem artesanal com carinho&quot;</li><li><strong>CTA Secundário</strong>: Repetição do botão WhatsApp após a lista de itens (o visitante não precisa rolar de volta)</li><li><strong>Depoimentos</strong>: Seção reutilizada de depoimentos para prova social</li><li><strong>Produtos Relacionados</strong>: Grid com 3-4 cestas da mesma categoria para cross-selling</li></ol><p><strong>Técnicas de geração de desejo (inspiradas em landing pages SaaS):</strong></p><ul><li>Imagem grande e de alta qualidade como hero visual</li><li>Preço em destaque com tipografia grande</li><li>Lista de itens com checkmarks (✓) em vez de bullets simples — transmite valor</li><li>Badges de confiança (entrega local, formas de pagamento)</li><li>Prova social (depoimentos) próxima ao CTA</li><li>Múltiplos CTAs na página (hero + após itens)</li><li>Produtos relacionados para manter o visitante navegando</li></ul><p><strong>Schema JSON-LD Product</strong> com name, description, image, offers (price, currency, availability)</p><h3>6. Product Card (partials/product-card.html)</h3><p>Card reutilizável com:</p><ul><li>Imagem com border-radius e hover effect (scale + shadow)</li><li>Nome do produto (H3)</li><li>Categoria</li><li>Preço</li><li>CTA button</li></ul><pre><code class="language-liquid">&lt;div class=&quot;product-card&quot; data-type=&quot;&quot;&gt;
+  &lt;a href=&quot;&quot;&gt;
+    &lt;img src=&quot;/imgs/&quot; 
+         alt=&quot; - Conselheiro Lafaiete&quot; 
+         loading=&quot;lazy&quot;&gt;
+  &lt;/a&gt;
+  &lt;div class=&quot;product-card__info&quot;&gt;
+    &lt;h3&gt;&lt;/h3&gt;
+    &lt;p class=&quot;product-card__type&quot;&gt;&lt;/p&gt;
+    &lt;p class=&quot;product-card__price&quot;&gt;&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;a href=&quot;https://wa.me/5531993434414?text=Vim do site e tenho interesse na &quot; 
+     class=&quot;btn btn--primary&quot;
+     onclick=&quot;trackWhatsAppClick('product', '')&quot;&gt;
+    RESERVAR
+  &lt;/a&gt;
+&lt;/div&gt;
+</code></pre><h3>7. Analytics (partials/analytics.html + js/index.js)</h3><p>Eventos rastreados:</p><ul><li><code>whatsapp_click</code>: com labels &quot;floating&quot;, &quot;hero&quot;, &quot;product_{nome}&quot;, &quot;footer&quot;</li><li><code>view_item</code>: ao carregar página de produto, com nome do produto</li><li><code>view_item_list</code>: ao carregar página de produtos</li><li><code>filter_category</code>: ao clicar em filtro de categoria</li></ul><pre><code class="language-javascript">function trackWhatsAppClick(source, label) {
+  gtag('event', 'whatsapp_click', {
+    'event_category': 'engagement',
+    'event_label': source + (label ? '_' + label : ''),
+    'send_to': 'AW-980642221'
+  });
+}
+
+function trackViewItem(productName) {
+  gtag('event', 'view_item', {
+    'event_category': 'ecommerce',
+    'event_label': productName
+  });
+}
+</code></pre><h3>8. Páginas de Keyword SEO</h3><p>As páginas de keyword continuam usando o layout <code>home.html</code>. Com o redesign do <code>home.html</code>, elas herdam automaticamente o novo visual. O frontmatter de cada keyword page fornece <code>title</code> e <code>description</code> customizados que são usados nos H1, meta tags e Open Graph.</p><p><strong>Nenhuma alteração nos arquivos <code>keywords/*.md</code> é necessária</strong> — o redesign do template <code>home.html</code> é suficiente.</p><h3>9. Estratégia de SEO Local Avançada</h3><p><strong>On-Page SEO:</strong></p><ul><li>Cada página tem <code>&lt;title&gt;</code> único com keyword principal + &quot;Conselheiro Lafaiete&quot; + &quot;Memorare Cestas&quot;</li><li>Meta description única por página com call-to-action e localidade</li><li>H1 único por página com keyword principal</li><li>H2s com variações de keywords (ex: &quot;Cestas artesanais para café da manhã&quot;, &quot;Presentes em Conselheiro Lafaiete MG&quot;)</li><li>Atributos alt de imagens com keywords descritivas em português (ex: &quot;Cesta artesanal de café da manhã em Conselheiro Lafaiete&quot;)</li><li>Links internos entre páginas de produto e página de produtos</li></ul><p><strong>Schema Markup Expandido:</strong></p><pre><code class="language-json">// LocalBusiness (layout.html - todas as páginas)
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;LocalBusiness&quot;,
+  &quot;name&quot;: &quot;Memorare Cestas&quot;,
+  &quot;description&quot;: &quot;Cestas artesanais com entrega em Conselheiro Lafaiete MG&quot;,
+  &quot;image&quot;: &quot;https://memorarecestas.com.br/imgs/Memorare - Cestas Artesanais - Conselheiro Lafaiete.webp&quot;,
+  &quot;url&quot;: &quot;https://memorarecestas.com.br&quot;,
+  &quot;telephone&quot;: &quot;+5531993434414&quot;,
+  &quot;email&quot;: &quot;contato@memorarecestas.com.br&quot;,
+  &quot;address&quot;: {
+    &quot;@type&quot;: &quot;PostalAddress&quot;,
+    &quot;streetAddress&quot;: &quot;Rua José Anacleto da Rocha, 45 - Novo Horizonte&quot;,
+    &quot;addressLocality&quot;: &quot;Conselheiro Lafaiete&quot;,
+    &quot;addressRegion&quot;: &quot;MG&quot;,
+    &quot;postalCode&quot;: &quot;36400-000&quot;,
+    &quot;addressCountry&quot;: &quot;BR&quot;
+  },
+  &quot;areaServed&quot;: {
+    &quot;@type&quot;: &quot;City&quot;,
+    &quot;name&quot;: &quot;Conselheiro Lafaiete&quot;
+  },
+  &quot;sameAs&quot;: [
+    &quot;https://instagram.com/memorare.cestas&quot;
+  ]
+}
+</code></pre><pre><code class="language-json">// Product (posts.html - páginas de produto)
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;Product&quot;,
+  &quot;name&quot;: &quot;&quot;,
+  &quot;description&quot;: &quot;&quot;,
+  &quot;image&quot;: &quot;https://memorarecestas.com.br/imgs/&quot;,
+  &quot;brand&quot;: { &quot;@type&quot;: &quot;Brand&quot;, &quot;name&quot;: &quot;Memorare Cestas&quot; },
+  &quot;offers&quot;: {
+    &quot;@type&quot;: &quot;Offer&quot;,
+    &quot;price&quot;: &quot;&quot;,
+    &quot;priceCurrency&quot;: &quot;BRL&quot;,
+    &quot;availability&quot;: &quot;https://schema.org/InStock&quot;,
+    &quot;url&quot;: &quot;https://memorarecestas.com.br/.kiro/specs/site-redesign/design/&quot;
+  }
+}
+</code></pre><pre><code class="language-json">// BreadcrumbList (posts.html - páginas de produto)
+{
+  &quot;@context&quot;: &quot;https://schema.org&quot;,
+  &quot;@type&quot;: &quot;BreadcrumbList&quot;,
+  &quot;itemListElement&quot;: [
+    { &quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 1, &quot;name&quot;: &quot;Início&quot;, &quot;item&quot;: &quot;https://memorarecestas.com.br/&quot; },
+    { &quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 2, &quot;name&quot;: &quot;Produtos&quot;, &quot;item&quot;: &quot;https://memorarecestas.com.br/produtos/&quot; },
+    { &quot;@type&quot;: &quot;ListItem&quot;, &quot;position&quot;: 3, &quot;name&quot;: &quot;&quot; }
+  ]
+}
+</code></pre><p><strong>Open Graph Tags (todas as páginas):</strong></p><pre><code class="language-html">&lt;meta property=&quot;og:type&quot; content=&quot;website&quot;&gt;
+&lt;meta property=&quot;og:title&quot; content=&quot;&quot;&gt;
+&lt;meta property=&quot;og:description&quot; content=&quot;&quot;&gt;
+&lt;meta property=&quot;og:url&quot; content=&quot;https://memorarecestas.com.br/.kiro/specs/site-redesign/design/&quot;&gt;
+&lt;meta property=&quot;og:image&quot; content=&quot;https://memorarecestas.com.br/imgs/Memorare - Cestas Artesanais - Conselheiro Lafaiete.webp&quot;&gt;
+&lt;meta property=&quot;og:locale&quot; content=&quot;pt_BR&quot;&gt;
+&lt;meta property=&quot;og:site_name&quot; content=&quot;Memorare Cestas&quot;&gt;
+</code></pre><h2>Modelos de Dados</h2><h3>Produto (frontmatter de cestas/*.md)</h3><pre><code class="language-yaml">title: &quot;Cesta Classic&quot;                    # Nome do produto
+pageTitle: &quot;Cesta Artesanal de...&quot;        # Title tag para SEO
+tags: cesta                               # Tag para collection
+type: &quot;Café da manhã/tarde&quot;               # Categoria
+price: &quot;R$ 185,00&quot;                        # Preço formatado
+photo: &quot;Cesta Classic Cafe da manha...&quot;   # Nome do arquivo de imagem
+layout: posts                             # Template de detalhe
+data: &quot;06/05/2025&quot;                        # Data para ordenação (DD/MM/YYYY)
+</code></pre><h3>Keyword Page (frontmatter de keywords/*.md)</h3><pre><code class="language-yaml">title: &quot;Cesta de Café da Manhã em Conselheiro Lafaiete&quot;
+description: &quot;Desperte o dia com uma cesta...&quot;
+layout: &quot;home.html&quot;
+permalink: &quot;/cesta-de-cafe-da-manha-em-conselheiro-lafaiete/&quot;
+</code></pre><h3>Site Config (_data/site.json)</h3><pre><code class="language-json">{
+  &quot;url&quot;: &quot;https://memorarecestas.com.br&quot;,
+  &quot;name&quot;: &quot;Memorare Cestas&quot;,
+  &quot;phone&quot;: &quot;+5531993434414&quot;,
+  &quot;whatsapp&quot;: &quot;5531993434414&quot;,
+  &quot;instagram&quot;: &quot;memorare.cestas&quot;,
+  &quot;email&quot;: &quot;contato@memorarecestas.com.br&quot;,
+  &quot;address&quot;: {
+    &quot;street&quot;: &quot;Rua José Anacleto da Rocha, 45&quot;,
+    &quot;neighborhood&quot;: &quot;Novo Horizonte&quot;,
+    &quot;city&quot;: &quot;Conselheiro Lafaiete&quot;,
+    &quot;state&quot;: &quot;MG&quot;,
+    &quot;zip&quot;: &quot;36400-000&quot;
+  }
+}
+</code></pre><h3>Categorias de Produto (derivadas dos dados existentes)</h3><p>As categorias são extraídas dinamicamente do campo <code>type</code> dos produtos:</p><ul><li>&quot;Café da manhã/tarde&quot;</li><li>&quot;Natal&quot;</li><li>&quot;Dia dos Namorados&quot;</li><li>&quot;Kids&quot;</li><li>(outras conforme novos produtos)</li></ul><h2>Propriedades de Corretude</h2><p><em>Uma propriedade é uma característica ou comportamento que deve ser verdadeiro em todas as execuções válidas de um sistema — essencialmente, uma declaração formal sobre o que o sistema deve fazer. Propriedades servem como ponte entre especificações legíveis por humanos e garantias de corretude verificáveis por máquina.</em></p><p>As propriedades abaixo foram derivadas dos critérios de aceitação dos requisitos. Critérios visuais/CSS (responsividade, hover effects, paleta de cores) e critérios de performance (tempo de carregamento) não são testáveis como propriedades automatizadas e foram excluídos.</p><h3>Propriedade 1: Cards de produto contêm todas as informações obrigatórias</h3><p><em>Para qualquer</em> produto na coleção, seu card na página de produtos deve conter: imagem com atributo src válido, nome do produto, categoria (type), preço e link para a página de detalhes com URL correta. <strong>Valida: Requisitos 3.1, 3.3</strong></p><h3>Propriedade 2: Filtro de categorias exibe apenas produtos da categoria selecionada</h3><p><em>Para qualquer</em> categoria existente nos produtos, ao aplicar o filtro, apenas os produtos cuja categoria corresponde à selecionada devem estar visíveis (display !== 'none'), e todos os outros devem estar ocultos. <strong>Valida: Requisitos 3.2</strong></p><h3>Propriedade 3: Página de detalhe do produto contém todos os elementos obrigatórios</h3><p><em>Para qualquer</em> produto, sua página de detalhes gerada deve conter: imagem, nome (H1), categoria, preço, descrição com itens e link CTA para WhatsApp com mensagem pré-preenchida contendo o nome do produto. <strong>Valida: Requisitos 4.1, 4.2</strong></p><h3>Propriedade 4: Cliques em WhatsApp disparam evento de analytics com origem correta</h3><p><em>Para qualquer</em> botão de WhatsApp no site (flutuante, hero, produto, footer), o handler onclick deve chamar a função de tracking com o parâmetro source correto identificando a origem do clique. <strong>Valida: Requisitos 6.1</strong></p><h3>Propriedade 5: Páginas de produto disparam evento view_item com nome correto</h3><p><em>Para qualquer</em> página de produto gerada, o script de analytics deve conter uma chamada de evento &quot;view_item&quot; com o nome do produto correspondente ao frontmatter. <strong>Valida: Requisitos 6.2</strong></p><h3>Propriedade 6: Filtro de categoria dispara evento de analytics</h3><p><em>Para qualquer</em> ação de filtro por categoria, a função de tracking deve ser chamada com o nome da categoria selecionada. <strong>Valida: Requisitos 6.4</strong></p><h3>Propriedade 7: Botão flutuante de WhatsApp presente em todas as páginas</h3><p><em>Para qualquer</em> página gerada pelo site (homepage, produtos, detalhe, keyword), o HTML deve conter o elemento do botão flutuante de WhatsApp com link correto. <strong>Valida: Requisitos 7.3</strong></p><h3>Propriedade 8: Páginas de keyword renderizam com título e meta tags específicos</h3><p><em>Para qualquer</em> página de keyword, o HTML gerado deve conter o título da keyword no H1, no tag <code>&lt;title&gt;</code> e na meta description, correspondendo ao frontmatter do arquivo Markdown. <strong>Valida: Requisitos 8.1, 8.4</strong></p><h3>Propriedade 9: Páginas de keyword usam layout home.html</h3><p><em>Para qualquer</em> arquivo Markdown no diretório keywords/, o frontmatter deve especificar <code>layout: &quot;home.html&quot;</code> para herdar o visual redesenhado. <strong>Valida: Requisitos 8.2</strong></p><h3>Propriedade 10: Permalinks de keyword são preservados</h3><p><em>Para qualquer</em> página de keyword existente, o permalink no frontmatter deve corresponder ao slug gerado a partir do título, mantendo as URLs inalteradas. <strong>Valida: Requisitos 8.3</strong></p><h3>Propriedade 11: Nome da cidade presente em headings e meta descriptions</h3><p><em>Para qualquer</em> página gerada, o HTML deve conter &quot;Conselheiro Lafaiete&quot; em pelo menos um heading (H1 ou H2) ou na meta description. <strong>Valida: Requisitos 9.1</strong></p><h3>Propriedade 12: Meta tags Open Graph presentes em todas as páginas</h3><p><em>Para qualquer</em> página gerada, o HTML deve conter as meta tags og:title, og:description, og:url e og:image. <strong>Valida: Requisitos 9.3</strong></p><h3>Propriedade 13: Breadcrumbs com schema markup nas páginas de produto</h3><p><em>Para qualquer</em> página de produto, o HTML deve conter um schema JSON-LD BreadcrumbList com itens representando a hierarquia de navegação (Início &gt; Produtos &gt; Nome do Produto). <strong>Valida: Requisitos 9.5</strong></p><h3>Propriedade 14: Sitemap contém todas as páginas de produto e keyword</h3><p><em>Para qualquer</em> produto e <em>para qualquer</em> página de keyword, a URL correspondente deve estar presente no sitemap.xml gerado. <strong>Valida: Requisitos 9.6</strong></p><h3>Propriedade 15: Heading tags seguem hierarquia semântica</h3><p><em>Para qualquer</em> página gerada, os heading tags devem seguir hierarquia correta: deve existir exatamente um H1, e nenhum H3 deve aparecer sem um H2 precedente. <strong>Valida: Requisitos 9.7</strong></p><h3>Propriedade 16: Schema JSON-LD Product nas páginas de produto</h3><p><em>Para qualquer</em> página de produto, o HTML deve conter um schema JSON-LD do tipo Product com campos name, price (ou offers), description e image correspondendo aos dados do frontmatter. <strong>Valida: Requisitos 9.8</strong></p><h3>Propriedade 17: Imagens possuem atributos alt descritivos</h3><p><em>Para qualquer</em> tag <code>&lt;img&gt;</code> no HTML gerado de qualquer página, o atributo alt deve estar presente e não vazio. <strong>Valida: Requisitos 10.2</strong></p><h3>Propriedade 18: Atributo lang=&quot;pt-BR&quot; em todas as páginas</h3><p><em>Para qualquer</em> página gerada, o elemento <code>&lt;html&gt;</code> deve conter o atributo <code>lang=&quot;pt-BR&quot;</code>. <strong>Valida: Requisitos 10.4</strong></p><h2>Tratamento de Erros</h2><p>Como site estático, o tratamento de erros é limitado ao build time e ao JavaScript client-side:</p><h3>Build Time</h3><ul><li><strong>Produto sem frontmatter obrigatório</strong>: O Eleventy deve falhar o build se um produto não tiver title, type, price ou photo. Isso é garantido pela estrutura existente dos templates Liquid que referenciam essas variáveis.</li><li><strong>Imagem não encontrada</strong>: Imagens referenciadas no frontmatter que não existem em <code>imgs/</code> resultarão em links quebrados. O build não falha, mas a imagem não carrega.</li></ul><h3>Client-Side (JavaScript)</h3><ul><li><strong>Filtro de categorias</strong>: Se nenhum produto corresponder à categoria (improvável com dados estáticos), o grid fica vazio. Nenhum tratamento especial necessário.</li><li><strong>Menu mobile</strong>: O toggle do menu usa classList.toggle, que é seguro mesmo se chamado múltiplas vezes.</li><li><strong>Analytics</strong>: Se o gtag não carregar (bloqueador de anúncios), as chamadas a <code>gtag()</code> falham silenciosamente. O JavaScript deve verificar se <code>gtag</code> existe antes de chamar:<pre><code class="language-javascript">function trackEvent(eventName, params) {
+  if (typeof gtag === 'function') {
+    gtag('event', eventName, params);
+  }
+}
+</code></pre></li></ul><h2>Estratégia de Testes</h2><h3>Abordagem Dual</h3><p>O projeto utiliza testes unitários e testes baseados em propriedades de forma complementar:</p><ul><li><strong>Testes unitários</strong>: Verificam exemplos específicos, edge cases e condições de erro</li><li><strong>Testes de propriedade</strong>: Verificam propriedades universais em todos os inputs válidos</li></ul><h3>Framework de Testes</h3><ul><li><strong>Linguagem</strong>: JavaScript (Node.js) — mesma linguagem do projeto Eleventy</li><li><strong>Framework de testes</strong>: Vitest (leve, rápido, compatível com ESM)</li><li><strong>Biblioteca de property-based testing</strong>: fast-check (biblioteca PBT mais popular para JavaScript)</li><li><strong>Abordagem</strong>: Testar o output do build Eleventy (HTML gerado) em vez de testar templates isolados</li></ul><h3>Configuração</h3><ul><li>Cada teste de propriedade deve rodar no mínimo 100 iterações</li><li>Cada teste deve referenciar a propriedade do design com comentário: <code>// Feature: site-redesign, Property N: [descrição]</code></li></ul><h3>Testes Unitários (exemplos e edge cases)</h3><ol><li>Homepage contém Hero Section com elementos obrigatórios (Req 1.1)</li><li>Homepage contém pelo menos 4 product cards (Req 1.2)</li><li>Homepage contém seção Sobre (Req 1.3)</li><li>Header contém logo, links de navegação e WhatsApp (Req 2.1)</li><li>Página de produtos dispara evento view_item_list (Req 6.3)</li><li>Evento de conversão genérico foi removido (Req 6.5)</li><li>Footer contém links, contato e redes sociais (Req 7.1)</li><li>Schema LocalBusiness contém todos os campos obrigatórios (Req 9.2)</li><li>HTML gerado é minificado (Req 10.3)</li></ol><h3>Testes de Propriedade</h3><p>Cada propriedade listada na seção de Propriedades de Corretude deve ser implementada como um teste de propriedade individual usando fast-check, com no mínimo 100 iterações por teste.</p>
