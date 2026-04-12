@@ -4,3 +4,5 @@ description: "Demonstre seu carinho e gratidão com uma cesta cheia de surpresas
 layout: "home.html"
 permalink: "/cesta-de-gratidao-em-conselheiro-lafaiete/"
 ---
+
+Expresse sua gratidão com uma cesta artesanal da Memorare em Conselheiro Lafaiete. Nossas cestas de agradecimento são montadas com produtos selecionados, chocolates, flores e personalização com cartão de mensagem. Um gesto carinhoso para professores, amigos, familiares ou qualquer pessoa que mereça um obrigado especial.

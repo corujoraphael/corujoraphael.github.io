@@ -2,51 +2,179 @@
 layout: layout.html
 ---
 
-<section id="product_info">
-  <h1 class="name">{{ title }}</h1>
-  <h2 class="name">Conselheiro Lafaiete - {{ type }}</h2>
+<!-- Breadcrumb -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+    <li><a href="/">Início</a></li>
+    <li><a href="/produtos/">Produtos</a></li>
+    <li aria-current="page">{{ title }}</li>
+  </ol>
+</nav>
 
-  <div id="details">
-    <div class="photo">
-      <img src="/imgs/{{ photo }}" alt="{{ title }}">
+<!-- Hero do Produto -->
+<section class="product-hero">
+  <div class="product-hero__image">
+    <img src="/imgs/{{ photo }}" alt="{{ title }} - Cesta artesanal em Conselheiro Lafaiete" loading="eager">
+  </div>
+  <div class="product-hero__details">
+    <span class="product-hero__category">{{ type }}</span>
+    <h1>{{ title }} — Conselheiro Lafaiete</h1>
+    <div class="product-hero__rating">
+      <span class="product-hero__stars" aria-label="5 estrelas">★★★★★</span>
+      <span class="product-hero__rating-text">5.0 · 16 avaliações</span>
     </div>
-    <div class="data">
-      <div class="description">
+    <p class="product-hero__price">{{ price }}</p>
+    <p class="product-hero__delivery">📍 Entrega em Conselheiro Lafaiete </p>
+
+    <!-- O que vem na cesta (inline no desktop) -->
+    <div class="product-hero__items">
+      <h2>O que vem na cesta</h2>
+      <div class="product-content__items">
         {{ content }}
-      </p>
-      <p class="price">{{ price }}</p>
-      <a href="https://wa.me/5531993434414?text=Vim do site e tenho interesse na {{ title }}" class="button">
-        RESERVAR
-      </a>
+      </div>
     </div>
 
+    <!-- Informações Importantes -->
+    <div class="product-hero__info-section">
+      <h3 class="product-hero__info-title">Informações Importantes</h3>
+      <div class="product-info-cards">
+        <div class="product-info-card">
+          <span>📍</span>
+          <div>
+            <h3>Entrega local</h3>
+            <p>Entregamos em toda a região de Conselheiro Lafaiete. Consulte a taxa pelo WhatsApp.</p>
+          </div>
+        </div>
+        <div class="product-info-card">
+          <span>⏰</span>
+          <div>
+            <h3>Prazo de pedido</h3>
+            <p>Pedidos com 24h de antecedência. Em alguns casos, atendemos em prazos menores.</p>
+          </div>
+        </div>
+        <div class="product-info-card">
+          <span>💳</span>
+          <div>
+            <h3>Formas de pagamento</h3>
+            <p>Aceitamos Pix, cartão de crédito/débito e transferência bancária.</p>
+          </div>
+        </div>
+        <div class="product-info-card">
+          <span>🔄</span>
+          <div>
+            <h3>Substituições</h3>
+            <p>Se algum item estiver indisponível, substituímos por similar ou superior mantendo a qualidade.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="https://wa.me/{{ site.whatsapp }}?text=Vim do site e tenho interesse na {{ title }}"
+       class="btn btn--whatsapp btn--large"
+       onclick="trackWhatsAppClick('product', '{{ title }}')"
+       rel="nofollow" target="_blank">
+      <i class="demo-icon icon-whatsapp"></i> Reservar pelo WhatsApp
+    </a>
   </div>
 </section>
-<section id="testimonials">
-  <div class="container">
-    <h2>Clientes Satisfeitos</h2>
-    <div class="cards">
-      <div class="testimonial">
-        <p class="who">Mariana Costa</p>
-        <p class="stars">★★★★★</p>
-        <p class="content">
-          Comprei uma cesta para o aniversário da minha mãe e foi simplesmente incrível! Cada detalhe estava perfeito, e ela ficou emocionada com o capricho. Super recomendo, atendimento impecável!
-        </p>
-      </div>
-      <div class="testimonial">
-        <p class="who">Juliana Mendes</p>
-        <p class="stars">★★★★★</p>
-        <p class="content">
-          Presenteei meu noivo com uma cesta e ele adorou! A apresentação estava impecável e os produtos de altíssima qualidade. Foi uma experiência inesquecível!
-        </p>
-      </div>
-      <div class="testimonial">
-        <p class="who">Carlos Almeida</p>
-        <p class="stars">★★★★★</p>
-        <p class="content">
-          Escolhi a Memorare para um pedido de desculpas e foi perfeito! A cesta foi entregue com muito carinho e superou todas as minhas expectativas. Um serviço incrível!
-        </p>
-      </div>
+
+<!-- Como Funciona -->
+<section class="how-it-works">
+  <h2>Como Funciona</h2>
+  <div class="how-it-works__grid">
+    <div class="how-it-works__step">
+      <span class="how-it-works__number">1</span>
+      <h3>Escolha sua cesta</h3>
+      <p>Navegue pelos nossos modelos ou peça uma personalizada</p>
+    </div>
+    <div class="how-it-works__step">
+      <span class="how-it-works__number">2</span>
+      <h3>Personalize</h3>
+      <p>Adicione mensagem, escolha itens extras e defina a data</p>
+    </div>
+    <div class="how-it-works__step">
+      <span class="how-it-works__number">3</span>
+      <h3>Receba com carinho</h3>
+      <p>Entregamos no dia e horário agendado em Conselheiro Lafaiete</p>
     </div>
   </div>
 </section>
+
+<!-- CTA Secundário -->
+<section class="product-cta">
+  <a href="https://wa.me/{{ site.whatsapp }}?text=Vim do site e tenho interesse na {{ title }}"
+     class="btn btn--whatsapp btn--large"
+     onclick="trackWhatsAppClick('product_cta', '{{ title }}')"
+     rel="nofollow" target="_blank">
+    <i class="demo-icon icon-whatsapp"></i> Reservar pelo WhatsApp
+  </a>
+</section>
+
+<!-- Depoimentos -->
+{% include "partials/testimonials.html" %}
+
+<!-- Mobile Sticky CTA -->
+<div class="mobile-sticky-cta">
+  <div class="mobile-sticky-cta__name">{{ title }}</div>
+  <a href="https://wa.me/{{ site.whatsapp }}?text=Vim do site e tenho interesse na {{ title }}"
+     class="btn btn--whatsapp"
+     onclick="trackWhatsAppClick('mobile_sticky', '{{ title }}')"
+     rel="nofollow" target="_blank">
+    <i class="demo-icon icon-whatsapp"></i> Reservar
+  </a>
+</div>
+
+<!-- Produtos Relacionados -->
+{% assign related = collections.cesta | orderByDate %}
+<section class="related-products">
+  <h2>Outras cestas que você pode gostar</h2>
+  <div class="related-products__grid">
+    {% for cesta in related %}
+      {% if cesta.data.type == type and cesta.data.title != title %}
+        {% include "partials/product-card.html", cesta: cesta %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Schema Product JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ title }}",
+  "description": "{{ description | default: title }} - Cesta artesanal em Conselheiro Lafaiete",
+  "image": "{{ site.url }}/imgs/{{ photo }}",
+  "brand": { "@type": "Brand", "name": "Memorare Cestas" },
+  "offers": {
+    "@type": "Offer",
+    "price": "{{ price | priceNumber }}",
+    "priceCurrency": "BRL",
+    "availability": "https://schema.org/InStock",
+    "url": "{{ site.url }}{{ page.url }}"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "16",
+    "bestRating": "5"
+  }
+}
+</script>
+
+<!-- Schema BreadcrumbList JSON-LD -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "Produtos", "item": "{{ site.url }}/produtos/" },
+    { "@type": "ListItem", "position": 3, "name": "{{ title }}" }
+  ]
+}
+</script>
+
+<script>
+  if (typeof trackViewItem === 'function') { trackViewItem('{{ title }}'); }
+</script>

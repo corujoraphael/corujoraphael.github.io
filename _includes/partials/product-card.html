@@ -1,0 +1,25 @@
+<div class="product-card" data-type="{{ cesta.data.type }}">
+  {% if cesta.data.popular %}
+  <span class="product-card__badge">Popular</span>
+  {% endif %}
+  <a href="{{ cesta.url }}" aria-label="Ver detalhes da {{ cesta.data.title }}">
+    <img src="/imgs/{{ cesta.data.photo }}" 
+         alt="{{ cesta.data.title }} - Cesta artesanal em Conselheiro Lafaiete" 
+         loading="lazy"
+         width="400"
+         height="400">
+  </a>
+  <div class="product-card__info">
+    <h3>{{ cesta.data.title }}</h3>
+    <p class="product-card__type">{{ cesta.data.type }}</p>
+    <p class="product-card__price">{{ cesta.data.price }}</p>
+  </div>
+  <a href="https://wa.me/{{ site.whatsapp }}?text=Vim do site e tenho interesse na {{ cesta.data.title }}" 
+     class="btn btn--primary"
+     aria-label="Reservar {{ cesta.data.title }} pelo WhatsApp"
+     onclick="trackWhatsAppClick('product', '{{ cesta.data.title }}')"
+     rel="nofollow"
+     target="_blank">
+    RESERVAR
+  </a>
+</div>

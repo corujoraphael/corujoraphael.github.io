@@ -1,6 +1,9 @@
 # Generated files
 package/generated*
 
+# Ignore build output
+_site/
+
 # Ignore installed npm modules
 node_modules/
 

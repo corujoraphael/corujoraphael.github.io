@@ -4,3 +4,5 @@ description: "Neste Dia das Mães, presenteie com uma cesta encantadora em Conse
 layout: "home.html"
 permalink: "/cesta-de-dia-das-maes-em-conselheiro-lafaiete/"
 ---
+
+Faça o Dia das Mães ser inesquecível com uma cesta artesanal da Memorare em Conselheiro Lafaiete. Montamos cestas especiais com café da manhã completo, flores, chocolates e itens personalizados para homenagear sua mãe da forma mais carinhosa. Cada cesta é preparada com dedicação e entregue no dia e horário que você escolher. Encomende pelo WhatsApp e demonstre todo seu amor.

@@ -4,3 +4,5 @@ description: "Delicie-se com uma cesta artesanal de doces em Conselheiro Lafaiet
 layout: "home.html"
 permalink: "/cesta-artesanal-de-doces-em-conselheiro-lafaiete/"
 ---
+
+Delicie-se com uma cesta artesanal de doces da Memorare em Conselheiro Lafaiete. Nossas cestas reúnem os melhores doces caseiros, chocolates, biscoitos amanteigados, pães de mel e guloseimas selecionadas. Montadas à mão com embalagem caprichada, são perfeitas para presentear quem ama doces em qualquer ocasião.

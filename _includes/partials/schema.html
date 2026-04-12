@@ -1,0 +1,34 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "{{ site.name }}",
+  "description": "Cestas artesanais com entrega em {{ site.address.city }} {{ site.address.state }}",
+  "image": "{{ site.url }}/imgs/Memorare - Cestas Artesanais - Conselheiro Lafaiete.webp",
+  "url": "{{ site.url }}",
+  "telephone": "{{ site.phone }}",
+  "email": "{{ site.email }}",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "{{ site.address.street }} - {{ site.address.neighborhood }}",
+    "addressLocality": "{{ site.address.city }}",
+    "addressRegion": "{{ site.address.state }}",
+    "postalCode": "{{ site.address.zip }}",
+    "addressCountry": "BR"
+  },
+  "areaServed": {
+    "@type": "City",
+    "name": "{{ site.address.city }}"
+  },
+  "priceRange": "R$ 100 - R$ 400",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "08:00",
+    "closes": "18:00"
+  },
+  "sameAs": [
+    "https://instagram.com/{{ site.instagram }}"
+  ]
+}
+</script>

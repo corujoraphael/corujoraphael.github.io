@@ -4,3 +4,5 @@ description: "Ofereça uma cesta de boas-vindas para quem acabou de se mudar par
 layout: "home.html"
 permalink: "/cesta-de-boasvindas-para-casa-nova-em-conselheiro-lafaiete/"
 ---
+
+Presenteie quem acabou de se mudar com uma cesta de boas-vindas da Memorare em Conselheiro Lafaiete. Nossas cestas para casa nova incluem itens úteis, guloseimas e produtos acolhedores para tornar o novo lar ainda mais especial. Um gesto carinhoso que faz toda a diferença na chegada.

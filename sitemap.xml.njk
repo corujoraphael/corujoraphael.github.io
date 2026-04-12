@@ -8,6 +8,19 @@ eleventyExcludeFromCollections: true
     <url>
       <loc>{{ site.url }}{{ page.url | url }}</loc>
       <lastmod>{{ page.date | today }}</lastmod>
+      {% if page.url == "/" %}
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+      {% elif page.url == "/produtos/" %}
+      <changefreq>weekly</changefreq>
+      <priority>0.9</priority>
+      {% elif "/cestas/" in page.url %}
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+      {% else %}
+      <changefreq>monthly</changefreq>
+      <priority>0.5</priority>
+      {% endif %}
     </url>
   {% endfor %}
 </urlset>

@@ -1,40 +1,38 @@
 ---
 layout: layout.html
+pageTitle: "Cestas Artesanais em Conselheiro Lafaiete MG | Memorare Cestas"
+description: "Conheça todas as cestas artesanais da Memorare com entrega em Conselheiro Lafaiete MG. Café da manhã, presentes, Natal e datas especiais."
+permalink: /produtos/
 ---
 
-<section id="products">
-  <h2>Escolha a que mais te agrada</h2>
-  <p>Cestas personalizadas, perfeitas para qualquer celebração. Cada detalhe é pensado para surpreender e emocionar quem você ama.</p>
-  <div class="container">
-    {% assign firstCestas = collections.cesta | orderByDate%}
-    {% for cesta in firstCestas %}
-    <div class="product">
-      <a href="{{ cesta.url}}">
-        <img src="/imgs/{{ cesta.data.photo }}" alt="{{ cesta.data.title }}">
-      </a>
-      <h3 class="name">{{ cesta.data.title }}</h3>
-      <p class="type">{{ cesta.data.type }}</p>
-      <p class="price">{{ cesta.data.price }}</p>
-      <a href="{{ cesta.url}}" class="button">
-        MAIS DETALHES
-      </a>
-    </div>
+<section class="produtos-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Início</a></li>
+      <li aria-current="page">Produtos</li>
+    </ol>
+  </nav>
+  <h1>Cestas Artesanais em Conselheiro Lafaiete</h1>
+  <p class="produtos-page__subtitle">Cestas personalizadas, perfeitas para qualquer celebração. Cada detalhe é pensado para surpreender e emocionar quem você ama.</p>
+
+  <!-- Filtro por categorias -->
+  <div class="filter-bar">
+    <button class="filter-btn active" data-category="all">Todas</button>
+    {% assign allCestas = collections.cesta | orderByDate %}
+    {% assign categories = allCestas | uniqueCategories %}
+    {% for cat in categories %}
+      <button class="filter-btn" data-category="{{ cat }}">{{ cat }}</button>
+    {% endfor %}
+  </div>
+
+  <!-- Grid de produtos -->
+  <div class="produtos-grid">
+    {% for cesta in allCestas %}
+      {% include "partials/product-card.html", cesta: cesta %}
     {% endfor %}
   </div>
 </section>
-<section id="highlights">
-  <div class="image">
-    <img src="/imgs/Cesta PicNic Cafe da manha - Conselheiro Lafaiete.webp" alt="">
-  </div>
-  <div class="text">
-    <h2>Transforme cada ocasião especial com Memorare Cestas</h2>
-    <p>As cestas personalizadas da Memorare Cestas são mais que presentes; elas criam memórias autênticas. Desde cestas de café da manhã frescas e saborosas até delícias em forma de chocolates finos, cada criação é feita para encantar.</p>
-    <p>Nossas opções para crianças garantem sorrisos e diversão, enquanto a qualidade e a dedicação das nossas cestas transmitem seu carinho de maneira única. Escolha a cesta perfeita para cada momento especial.</p>
-    <ul>
-      <li>Cestas personalizadas adequadas para qualquer ocasião</li>
-      <li>Ingredientes frescos e de alta qualidade</li>
-      <li>Embalagens cuidadosas que impressionam</li>
-      <li>Cuidado especial em cada detalhe de nossas criações</li>
-    </ul>
-  </div>
-</section>
+
+<script>
+  if (typeof trackViewItemList === 'function') { trackViewItemList(); }
+</script>

@@ -1,3 +1,15 @@
 {
-  "url": "https://memorarecestas.com.br"
+  "url": "https://memorarecestas.com.br",
+  "name": "Memorare Cestas",
+  "phone": "+5531993434414",
+  "whatsapp": "5531993434414",
+  "instagram": "memorare.cestas",
+  "email": "contato@memorarecestas.com.br",
+  "address": {
+    "street": "Rua José Anacleto da Rocha, 45",
+    "neighborhood": "Novo Horizonte",
+    "city": "Conselheiro Lafaiete",
+    "state": "MG",
+    "zip": "36400-000"
+  }
 }

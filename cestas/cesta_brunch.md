@@ -1,5 +1,6 @@
 ---
 title: Cesta Brunch
+description: "Cesta Brunch - Cesta artesanal com entrega em Conselheiro Lafaiete MG. Memorare Cestas."
 pageTitle: Cesta Artesanal de cafe da manha/tarde Brunch em Conselheiro Lafaiete MG | Memorare Cestas
 tags: cesta
 type: Café da manhã/tarde
@@ -24,14 +25,3 @@ Cesta artesanal composta pelos seguintes itens:
 - Cartão de mensagem
 - Tag Personalizada
 - Embalagem
-
-
-Pedidos com 24h de antecedência (podendo ser atendido antes mesmo desse prazo). 
-
-Aceitamos Pix, Cartão e Transferência. 
-
-Caso haja indisponibilidade de algum item no momento da montagem, nos reservamos no direito de fazer substituições por itens semelhantes. 
-
-As flores podem variar de acordo com a disponibilidade do fornecedor não sendo possível a escolha das mesmas. 
-
-Consultar taxa de entrega

@@ -1,0 +1,53 @@
+<!-- Google tag (gtag.js) - deferred -->
+<script>
+  window.addEventListener('load', function() {
+    var s = document.createElement('script');
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=AW-980642221';
+    s.async = true;
+    document.head.appendChild(s);
+    s.onload = function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'AW-980642221');
+    };
+  });
+
+  function trackWhatsAppClick(source, label) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'whatsapp_click', {
+        'event_category': 'engagement',
+        'event_label': source + (label ? '_' + label : ''),
+        'send_to': 'AW-980642221'
+      });
+    }
+  }
+
+  function trackViewItem(productName) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'view_item', {
+        'event_category': 'ecommerce',
+        'event_label': productName
+      });
+    }
+  }
+
+  function trackViewItemList() {
+    if (typeof gtag === 'function') {
+      gtag('event', 'view_item_list', {
+        'event_category': 'ecommerce',
+        'event_label': 'products_page'
+      });
+    }
+  }
+
+  function trackFilterCategory(category) {
+    if (typeof gtag === 'function') {
+      gtag('event', 'filter_category', {
+        'event_category': 'engagement',
+        'event_label': category
+      });
+    }
+  }
+</script>
