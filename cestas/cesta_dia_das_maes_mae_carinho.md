@@ -7,7 +7,7 @@ type: Dia das Mães 2026
 price: R$ 220,00
 photo: Cesta Dia das Maes Mae Carinho - Conselheiro Lafaiete.webp
 layout: posts
-data: 11/05/2026
+data: 13/05/2026
 ---
 Cesta artesanal especial de Dia das Mães composta pelos seguintes itens:
 

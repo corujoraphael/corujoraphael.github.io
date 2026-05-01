@@ -7,7 +7,7 @@ type: Dia das Mães 2026
 price: R$ 250,00
 photo: Cesta Dia das Maes Florescer - Conselheiro Lafaiete.webp
 layout: posts
-data: 11/05/2026
+data: 14/05/2026
 ---
 Cesta artesanal especial de Dia das Mães composta pelos seguintes itens:
 
