@@ -4,11 +4,11 @@ description: "Cesta Classic - Cesta artesanal com entrega em Conselheiro Lafaiet
 pageTitle: Cesta Artesanal de cafe da manhã/tarde Classic em Conselheiro Lafaiete MG | Memorare Cestas
 tags: cesta
 type: Café da manhã/tarde
-price: R$ 185,00
+price: R$ 215,00
 photo: Cesta Classic Cafe da manha - Conselheiro Lafaiete.webp
 popular: true
 layout: posts
-data: 06/05/2025
+data: 06/01/2026
 ---
 Cesta artesanal composta pelos seguintes itens:
 
