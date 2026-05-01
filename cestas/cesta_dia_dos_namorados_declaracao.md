@@ -3,7 +3,7 @@ title: Cesta Dia dos Namorados Declaração
 description: "Cesta Dia dos Namorados Declaração - Cesta artesanal com entrega em Conselheiro Lafaiete MG. Memorare Cestas."
 pageTitle: Cesta Dia dos Namorados em Conselheiro Lafaiete MG | Declaração | Memorare Cestas
 tags: cesta
-type: Dia dos namorados
+type: Dia dos namorados 2025
 price: R$ 220,00
 photo: Cesta Dia dos Namorados Declaracao - Conselheiro Lafaiete.webp
 layout: posts

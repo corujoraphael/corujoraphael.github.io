@@ -3,7 +3,7 @@ title: Cesta Natal Boas Festas
 description: "Cesta Natal Boas Festas - Cesta artesanal com entrega em Conselheiro Lafaiete MG. Memorare Cestas."
 pageTitle: Cesta Natal em Conselheiro Lafaiete MG | Boas Festas | Memorare Cestas
 tags: cesta
-type: Natal
+type: Natal 2025
 price: R$ 230,00
 photo: Cesta Natal Boas Festas - Conselheiro Lafaiete.webp
 layout: posts

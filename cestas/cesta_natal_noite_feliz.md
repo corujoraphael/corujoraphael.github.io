@@ -3,7 +3,7 @@ title: Cesta Natal Noite Feliz
 description: "Cesta Natal Noite Feliz - Cesta artesanal com entrega em Conselheiro Lafaiete MG. Memorare Cestas."
 pageTitle: Cesta Natal em Conselheiro Lafaiete MG | Noite Feliz | Memorare Cestas
 tags: cesta
-type: Natal
+type: Natal 2025
 price: R$ 260,00
 photo: Cesta Natal Noite Feliz - Conselheiro Lafaiete.webp
 layout: posts

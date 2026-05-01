@@ -3,7 +3,7 @@ title: Cesta Natal Café Natalino
 description: "Cesta Natal Café Natalino - Cesta artesanal com entrega em Conselheiro Lafaiete MG. Memorare Cestas."
 pageTitle: Cesta Natal em Conselheiro Lafaiete MG | Café Natalino | Memorare Cestas
 tags: cesta
-type: Natal
+type: Natal 2025
 price: R$ 240,00
 photo: Cesta Natal Cafe Natalino - Conselheiro Lafaiete.webp
 layout: posts

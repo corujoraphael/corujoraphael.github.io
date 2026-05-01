@@ -3,7 +3,7 @@ title: Cesta Natal Celebrar
 description: "Cesta Natal Celebrar - Cesta artesanal com entrega em Conselheiro Lafaiete MG. Memorare Cestas."
 pageTitle: Cesta Natal em Conselheiro Lafaiete MG | Celebrar | Memorare Cestas
 tags: cesta
-type: Natal
+type: Natal 2025
 price: R$ 299,00
 photo: Cesta Natal Celebrar - Conselheiro Lafaiete.webp
 layout: posts
