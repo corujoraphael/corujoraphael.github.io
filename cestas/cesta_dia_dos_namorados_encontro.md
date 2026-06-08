@@ -4,7 +4,7 @@ description: "Cesta Dia dos Namorados Encontro - Cesta artesanal com entrega em 
 pageTitle: Cesta Dia dos Namorados em Conselheiro Lafaiete MG | Encontro | Memorare Cestas
 tags: cesta
 type: Dia dos namorados 2025
-price: R$ 320,00
+# price: R$ 320,00
 photo: Cesta Dia dos Namorados Encontro - Conselheiro Lafaiete.webp
 layout: posts
 data: 06/06/2025
