@@ -46,6 +46,14 @@ layout: layout.html
 <!-- Banner Sazonal (trocar o include conforme a data) -->
 {% include "partials/seasonal/natal.html" %}
 
+{% if content and content != "" %}
+<section class="sobre" style="padding-bottom:0">
+  <div class="sobre__content" style="display:block;max-width:900px;margin:0 auto">
+    {{ content }}
+  </div>
+</section>
+{% endif %}
+
 <!-- Produtos em Destaque -->
 <section class="produtos-destaque">
   <h2>Nossas Cestas Mais Pedidas</h2>

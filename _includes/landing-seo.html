@@ -1,0 +1,48 @@
+---
+layout: layout.html
+---
+
+<section class="produtos-page">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="/">Início</a></li>
+      <li><a href="/produtos/">Produtos</a></li>
+      <li aria-current="page">{{ breadcrumbLabel | default: title }}</li>
+    </ol>
+  </nav>
+
+  <h1>{{ title }}</h1>
+  <p class="produtos-page__subtitle">{{ description }}</p>
+
+  {% if content %}
+  <div style="max-width:820px;margin:0 auto 36px;text-align:left;line-height:1.7">
+    {{ content }}
+  </div>
+  {% endif %}
+
+  <div style="margin:0 auto 40px;text-align:center">
+    <a href="https://wa.me/{{ site.whatsapp }}?text=Vim do site e gostaria de encomendar uma cesta ({{ title }})."
+       class="btn btn--whatsapp btn--large"
+       onclick="trackWhatsAppClick('landing_seo', '{{ breadcrumbLabel | default: title }}')"
+       rel="nofollow" target="_blank">
+      <i class="demo-icon icon-whatsapp"></i> Encomendar pelo WhatsApp
+    </a>
+  </div>
+
+  {% assign allCestas = collections.cesta | orderByDate %}
+  <div class="produtos-grid">
+    {% for cesta in allCestas %}
+      {% if productType %}
+        {% if cesta.data.type == productType %}
+          {% include "partials/product-card.html", cesta: cesta %}
+        {% endif %}
+      {% else %}
+        {% include "partials/product-card.html", cesta: cesta %}
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="produtos-destaque__cta" style="margin-top:40px">
+    <a href="/produtos/" class="btn btn--outline">Ver todo o catálogo de cestas</a>
+  </div>
+</section>
