@@ -21,7 +21,7 @@ layout: layout.html
     <h1>{{ title }} — Conselheiro Lafaiete</h1>
     <div class="product-hero__rating">
       <span class="product-hero__stars" aria-label="5 estrelas">★★★★★</span>
-      <span class="product-hero__rating-text">5.0 · 16 avaliações</span>
+      <span class="product-hero__rating-text">{{ site.rating.value }} · {{ site.rating.count }} avaliações</span>
     </div>
     <p class="product-hero__price">{{ price }}</p>
     <p class="product-hero__delivery">📍 Entrega em Conselheiro Lafaiete </p>
@@ -155,8 +155,8 @@ layout: layout.html
   },
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "16",
+    "ratingValue": "{{ site.rating.value }}",
+    "reviewCount": "{{ site.rating.count }}",
     "bestRating": "5"
   }
 }
