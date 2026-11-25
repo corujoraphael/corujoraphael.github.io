@@ -1,8 +1,12 @@
 ---
 title: "Cesta de Natal em Conselheiro Lafaiete"
-description: "Celebre o Natal com cestas exclusivas de Conselheiro Lafaiete. Presentes com itens gourmet, chocolates e muito mais para um final de ano inesquecível. A escolha perfeita para surpreender quem você ama."
-layout: "home.html"
+breadcrumbLabel: "Cesta de Natal em Lafaiete"
+pageTitle: "Cesta de Natal em Conselheiro Lafaiete MG | A partir de R$ 170 | Memorare"
+description: "Cestas de Natal artesanais com panetone, Ferrero Rocher, espumante e cartão personalizado. Entrega em Conselheiro Lafaiete - MG. Peça pelo WhatsApp!"
+layout: "landing-seo.html"
 permalink: "/cesta-de-natal-em-conselheiro-lafaiete/"
+productType: "Natal 2025"
 ---
 
-Celebre o Natal com cestas artesanais da Memorare em Conselheiro Lafaiete. Nossas cestas natalinas são compostas por itens gourmet, chocolates finos, panetones, biscoitos e produtos selecionados para presentear com elegância. Perfeitas para familiares, amigos ou colaboradores da sua empresa. Monte sua cesta personalizada ou escolha entre nossos modelos prontos. Faça sua encomenda com antecedência pelo WhatsApp e garanta a entrega na data desejada.
+<p>Procurando <strong>cesta de Natal em Conselheiro Lafaiete</strong>? Na <strong>Memorare Cestas</strong> preparamos cestas natalinas artesanais a partir de <strong>R$ 170,00</strong>, com panetone, Ferrero Rocher, chocolates finos, canecas temáticas, espumante e cartão personalizado.</p>
+<p>Atendemos pedidos para família, amigos, amigo oculto e empresas com entrega agendada em toda Conselheiro Lafaiete - MG.</p>
