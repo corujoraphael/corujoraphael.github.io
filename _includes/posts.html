@@ -151,7 +151,35 @@ layout: layout.html
     "price": "{{ price | priceNumber }}",
     "priceCurrency": "BRL",
     "availability": "https://schema.org/InStock",
-    "url": "{{ site.url }}{{ page.url }}"
+    "url": "{{ site.url }}{{ page.url }}",
+    "shippingDetails": {
+      "@type": "OfferShippingDetails",
+      "shippingDestination": {
+        "@type": "DefinedRegion",
+        "addressCountry": "BR",
+        "addressRegion": "MG"
+      },
+      "deliveryTime": {
+        "@type": "ShippingDeliveryTime",
+        "handlingTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        },
+        "transitTime": {
+          "@type": "QuantitativeValue",
+          "minValue": 0,
+          "maxValue": 1,
+          "unitCode": "DAY"
+        }
+      }
+    },
+    "hasMerchantReturnPolicy": {
+      "@type": "MerchantReturnPolicy",
+      "applicableCountry": "BR",
+      "returnPolicyCategory": "https://schema.org/MerchantReturnNotPermitted"
+    }
   },
   "aggregateRating": {
     "@type": "AggregateRating",
