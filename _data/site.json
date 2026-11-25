@@ -6,12 +6,18 @@
   "phone": "+5531993434414",
   "whatsapp": "5531993434414",
   "instagram": "memorare.cestas",
+  "googleMapsUrl": "https://www.google.com/maps/place/Memorare+Cestas+Caf%C3%A9+da+Manh%C3%A3+Conselheiro+Lafaiete/data=!4m2!3m1!1s0x2b70f6477399fec3:0x31f440b809564099",
+  "googleReviewUrl": "https://g.page/r/CZlAVgm4QPQxEBM/review",
+  "rating": {
+    "value": "5.0",
+    "count": 43
+  },
   "email": "contato@memorarecestas.com.br",
   "address": {
     "street": "Rua José Anacleto da Rocha, 45",
     "neighborhood": "Novo Horizonte",
     "city": "Conselheiro Lafaiete",
     "state": "MG",
-    "zip": "36400-000"
+    "zip": "36402-161"
   }
 }

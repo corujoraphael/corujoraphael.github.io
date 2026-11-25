@@ -1,11 +1,13 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": ["LocalBusiness", "GiftShop"],
+  "@id": "{{ site.url }}/#localbusiness",
   "name": "{{ site.name }}",
   "description": "Cestas artesanais com entrega em {{ site.address.city }} {{ site.address.state }}",
   "image": "{{ site.url }}/imgs/Memorare - Cestas Artesanais - Conselheiro Lafaiete.webp",
   "url": "{{ site.url }}",
+  "hasMap": "{{ site.googleMapsUrl }}",
   "telephone": "{{ site.phone }}",
   "email": "{{ site.email }}",
   "address": {
@@ -23,12 +25,20 @@
   "priceRange": "R$ 100 - R$ 400",
   "openingHoursSpecification": {
     "@type": "OpeningHoursSpecification",
-    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "opens": "08:00",
-    "closes": "18:00"
+    "dayOfWeek": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "opens": "00:00",
+    "closes": "23:59"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ site.rating.value }}",
+    "reviewCount": {{ site.rating.count }},
+    "bestRating": "5",
+    "worstRating": "1"
   },
   "sameAs": [
-    "https://instagram.com/{{ site.instagram }}"
+    "https://instagram.com/{{ site.instagram }}",
+    "{{ site.googleMapsUrl }}"
   ]
 }
 </script>
