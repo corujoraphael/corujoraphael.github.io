@@ -1,0 +1,35 @@
+---
+layout: layout.html
+title: "Página não encontrada | Memorare Cestas"
+pageTitle: "Página não encontrada | Memorare Cestas"
+description: "A página que você procurou não foi encontrada. Confira nossas cestas artesanais com entrega em Conselheiro Lafaiete - MG."
+robots: noindex, nofollow
+eleventyExcludeFromCollections: true
+permalink: "/404.html"
+---
+
+<section class="produtos-page" style="text-align:center;padding-top:60px;padding-bottom:60px">
+  <h1>Ops! Página não encontrada</h1>
+  <p class="produtos-page__subtitle">
+    O endereço que você acessou não existe ou mudou de lugar, mas nossas cestas artesanais continuam disponíveis para entrega em Conselheiro Lafaiete - MG.
+  </p>
+
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:28px 0 48px">
+    <a href="/produtos/" class="btn btn--outline">Ver todas as cestas</a>
+    <a href="/" class="btn btn--outline">Ir para o início</a>
+    <a href="https://wa.me/{{ site.whatsapp }}?text=Vim do site e gostaria de encomendar uma cesta."
+       class="btn btn--whatsapp"
+       onclick="trackWhatsAppClick('404_page', 'cta')"
+       rel="nofollow" target="_blank">
+      <i class="demo-icon icon-whatsapp"></i> Falar no WhatsApp
+    </a>
+  </div>
+
+  <h2>Nossas Cestas Mais Pedidas</h2>
+  <div class="produtos-grid" style="margin-top:24px">
+    {% assign firstCestas = collections.cesta | orderByDate | limit: 4 %}
+    {% for cesta in firstCestas %}
+      {% include "partials/product-card.html", cesta: cesta %}
+    {% endfor %}
+  </div>
+</section>
